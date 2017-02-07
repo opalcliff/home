@@ -35,14 +35,10 @@ group:
     - device_tracker.vmb3010
     
   Weather:
-#    - sensor.dark_sky_icon
     - sensor.dark_sky_daily_summary
- #   - sensor.dark_sky_hourly_summary
-  #  - sensor.sensor.dark_sky_daily_high_temperature
-   # - sensor.sensor.dark_sky_temperature
-#    - sensor.sensor.dark_sky_daily_low_temperature
-#    - sensor.dark_sky_nearest_storm_distance
-    
+    - sensor.dark_sky_hourly_summary
+    - sensor.pws_alerts
+   
   Network:
     - sensor.speedtest_download
     - sensor.speedtest_upload
@@ -87,7 +83,7 @@ automation:
     entity_id: group.back_fifty
 
 automation 2:
-  alias: Turn off back fify lights late at night
+  alias: Turn off back fifty lights late at night
   trigger:
     platform: time
     after: '23:15:00'
@@ -159,9 +155,7 @@ sensor:
       - location
       - observation_time
       - precip_today_in
-      - precip_today_string
    #   - station_id: 'KCASANTA290'
-      - temperature_string
       - temp_f
       - visibility_mi
       - weather
@@ -170,7 +164,6 @@ sensor:
       - wind_mph
       
 # system     
-  
   - platform: speedtest
     monitored_conditions:
       - ping
